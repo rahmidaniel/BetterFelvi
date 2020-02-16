@@ -6,25 +6,25 @@ let constructor = function(array, score){
     array[0].forEach(element => {
         if(array[1].length !== 0){
             if( array[1].includes(element[4])){
-                k += '<tr style="background-color: green;">';
+                k += '<tr style="color: green; padding: none; border: none">';
                 k += '<td>' + element[1] + '</td>';
                 k += '<td>' + element[0] + '</td>';
-                k += '<td>' + element[2] + '</td>';
-                k += '<td>' + element[3] + '</td>';
+                //k += '<td>' + element[2] + '</td>';
+                //k += '<td>' + element[3] + '</td>';
                 k += '<td>' + element[4] + '</td>';
-                k += '<td style="text-align:center">' + score + '</td>';
+                k += '<td style="text-align: center">' + score + '</td>';
                 k += '</tr>';
             };
         }
         if(array[2].length !== 0){
             if ( array[2].includes(element[4])){
-                k += '<tr style="background-color: red; padding: none; border: none">';
+                k += '<tr style="color: #c0392b; padding: none; border: none">';
                 k += '<td>' + element[1] + '</td>';
                 k += '<td>' + element[0] + '</td>';
-                k += '<td>' + element[2] + '</td>';
-                k += '<td>' + element[3] + '</td>';
+                //k += '<td>' + element[2] + '</td>';
+                //k += '<td>' + element[3] + '</td>';
                 k += '<td>' + element[4] + '</td>';
-                k += '<td style="text-align:center">' + score + '</td>';
+                k += '<td style="text-align: center">' + score + '</td>';
                 k += '</tr>';
             };
         };
@@ -33,7 +33,7 @@ let constructor = function(array, score){
     document.getElementById('constructor').innerHTML = k;
 };
 
-//Data and main function (dont know how to read json file for chrome extension, so copied contents to object) Ugly!!!
+//Data (dont know how to read json file for chrome extension, so copied contents to object) Ugly!!!
 let data = {
     "Év": {
       "0": "2019/Á",
@@ -60076,7 +60076,7 @@ let data = {
       "7502": -1
    }
   };
-//HTML constructor
+//Main function
   const main = function(){
     //Filter function
     Object.filter = (obj, predicate) => 
@@ -60126,7 +60126,7 @@ let data = {
       accepted = small;
 
       user_data = [output[0], accepted, declined]
-      console.log(user_data);
+      //console.log(user_data); //For testing
       return user_data;
     };
     filteredData();
@@ -60142,7 +60142,7 @@ button.addEventListener("click", function(){
             //Timeout important to functionality
             setTimeout(() => {
                 //Adding skeleton table to div
-                let table = '<table style="width:100%; height:100%; background-color: silver; font-size: 16px; color: white; border: none"><tbody id="constructor"></tbody></table>'
+                let table = '<table style="width:100%; height:100%; background-color: #e5e5e5; font-size: 16px; color: black; border: none"><thead><tr><td colspan=2 style="text-align: left">Egyetem és kar neve</td><td style="text-align: center">Ponthatár</td><td style="text-align: right">Ön pontja</td></tr></thead><tbody id="constructor"></tbody></table>'
                 document.getElementById("divPontSzam").innerHTML = table;
 
                 //Using main and constructor function
