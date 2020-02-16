@@ -1,6 +1,6 @@
 {
     "name": "BetterFelvi",
-    "version": "0.1",
+    "version": "1.0",
     "description": "Átláthatóbb pontszámító kalkulátor eredmények",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
@@ -8,6 +8,7 @@
         "persistent": false
       },
     "page_action": {
+      "default_icon": "logo.png",
       "default_popup": "popup.html"
       },
     "content_scripts": [
@@ -17,5 +18,8 @@
         "js": ["contentscript.js"]
       }
     ],
+    "icons": {
+      "128": "logo.png"
+    },
     "manifest_version": 2
   }
