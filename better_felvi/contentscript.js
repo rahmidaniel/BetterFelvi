@@ -60142,7 +60142,7 @@ button.addEventListener("click", function(){
             //Timeout important to functionality
             setTimeout(() => {
                 //Adding skeleton table to div
-                let table = '<table style="width:100%; height:100%; background-color: #e5e5e5; font-size: 16px; color: black; border: none"><thead><tr><td colspan=2 style="text-align: left">Egyetem és kar neve</td><td style="text-align: center">Ponthatár</td><td style="text-align: right">Ön pontja</td></tr></thead><tbody id="constructor"></tbody></table>'
+                let table = '<table style="width:100%; height:100%; background-color: #e5e5e5; font-size: 16px; color: black; border: none"><thead><tr><td colspan=2 style="text-align: left">Egyetem és kar neve</td><td>Ponthatár</td><td style="text-align: right">Ön pontja</td></tr></thead><tbody id="constructor"></tbody></table>'
                 document.getElementById("divPontSzam").innerHTML = table;
 
                 //Using main and constructor function
