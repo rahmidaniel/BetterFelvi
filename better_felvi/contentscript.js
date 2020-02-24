@@ -4,6 +4,10 @@ console.log('we are in boyz ~ daniel')
 let constructor = function(array, score){
     let k = '<tbody>';
     array[0].forEach(element => {
+        //Adding skeleton table to div
+        let table = '<table style="width:100%; height:100%; background-color: #e5e5e5; font-size: 16px; color: black"><thead><tr><td colspan=2 style="text-align: left">Egyetem és kar neve</td><td>Ponthatár</td><td style="text-align: right">Ön pontja</td></tr></thead><tbody id="constructor"></tbody></table>'
+        document.getElementById("divPontSzam").innerHTML = table;
+
         if(array[1].length !== 0){
             if( array[1].includes(element[4])){
                 k += '<tr style="color: green; padding: none; border: none">';
@@ -60136,34 +60140,31 @@ let data = {
 //Event handler
 let button = document.getElementById("btnCalcPont")
 button.addEventListener("click", function(){
-        if(document.getElementById("divPontSzam").innerHTML !== ''){
+        //Check if the calculation has been done before
+        if(document.getElementById("divPontSzam").innerHTML !== '' && document.getElementById("divPontSzam").innerHTML.length  === 3){
             //Grabbing user score from calculator
-            let pont = document.getElementById("divPontSzam").innerHTML;
+            const pont = document.getElementById("divPontSzam").innerHTML;
+            t = document.getElementById('jMegId');
+            typeAndCourse = t.options[t.selectedIndex].text;
+            
+            type = typeAndCourse.slice(1, 4);
+            course = typeAndCourse.slice(5).trim().replace(/ *\([^)]*\) */g, ""); //Remove parameters in parentheses to expand functionality
+            score = pont;
+
             //Timeout important to functionality
             setTimeout(() => {
-                //Adding skeleton table to div
-                let table = '<table style="width:100%; height:100%; background-color: #e5e5e5; font-size: 16px; color: black; border: none"><thead><tr><td colspan=2 style="text-align: left">Egyetem és kar neve</td><td>Ponthatár</td><td style="text-align: right">Ön pontja</td></tr></thead><tbody id="constructor"></tbody></table>'
-                document.getElementById("divPontSzam").innerHTML = table;
-
                 //Using main and constructor function
-                t = document.getElementById('jMegId');
-                typeAndCourse = t.options[t.selectedIndex].text;
-
-                type = typeAndCourse.slice(1, 4);
-                course = typeAndCourse.slice(5).trim().replace(/ *\([^)]*\) */g, "");
-                score = pont;
-
                 main();
                 constructor(user_data, score);
-                button.addEventListener("click", function(){
+                //Reset
+                this.addEventListener("click", function(){
                     document.getElementById('divPontSzam').innerHTML = '';
                 });
             }, 1500);
-            //Reset
-        } else {
-            button.addEventListener("click", function(){
-                document.getElementById('divPontSzam').innerHTML = '';
-        });
-        }
+        }else{
+        //Reset table
+            document.getElementById("divPontSzam").innerHTML = '';
+    }
+        
 });
 
